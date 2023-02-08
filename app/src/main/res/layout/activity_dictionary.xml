@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Dictionary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@color/main">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchingview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
+            android:layout_marginHorizontal="70dp"
+            android:background="@drawable/searchcurve"
+            app:animateMenuItems="true"
+            app:animateNavigationIcon="true"
+            app:defaultQueryHint="Search for your words here"
+            app:iconifiedByDefault="false" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:onClick="goback"
+            android:src="@drawable/back" />
+
+        <ImageView
+            android:id="@+id/searchicon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/search" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="-38dp"
+        app:cardCornerRadius="15dp"
+        android:layout_height="80dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Word"
+                android:paddingLeft="40dp"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/exchange" />
+
+            <TextView
+                android:id="@+id/phonectics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phonetics"
+                android:paddingRight="20dp"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerview"/>
+
+
+
+
+</LinearLayout>
