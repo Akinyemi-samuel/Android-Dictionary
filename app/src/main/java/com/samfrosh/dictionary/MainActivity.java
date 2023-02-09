@@ -17,4 +17,8 @@ public class MainActivity extends AppCompatActivity {
     public void gotodictionary(View view) {
         startActivity(new Intent(getApplicationContext(),Dictionary.class));
     }
+
+    public void gotoabout(View view) {
+        startActivity(new Intent(getApplicationContext(),About.class));
+    }
 }

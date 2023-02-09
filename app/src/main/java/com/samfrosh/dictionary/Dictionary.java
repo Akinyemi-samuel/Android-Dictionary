@@ -43,11 +43,11 @@ String examples,meanings,partofspeech;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dictionary);
 
-       // searchword = findViewById(R.id.searchview);
-       // meaning = findViewById(R.id.meanings);
+        speech = findViewById(R.id.partofspeechdistionary);
+        meaning = findViewById(R.id.Definitiondistionary);
         word = findViewById(R.id.word);
         phonectics = findViewById(R.id.phonectics);
-       // example = findViewById(R.id.examples);
+        example = findViewById(R.id.exampledistionary);
         searchingview = findViewById(R.id.searchingview);
         searchicon = findViewById(R.id.searchicon);
 
@@ -73,7 +73,7 @@ String examples,meanings,partofspeech;
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setHasFixedSize(false);
 
-
+//THIS IS THE SEARCHPLACEHOLDER THAT COLLECTS EVERY TEXT
         searchingview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -98,7 +98,8 @@ String examples,meanings,partofspeech;
 
     private void searchword(String getsearchword) {
         loading.showLoadingDialog();
-        //String getsearchword = searchword.getText().toString().trim();
+
+        //THIS IS THE API RESPONSIBLE FOR THE REQUEST AND A VARIABLE FOR THE WORD TO SEARCH
         String dictionaryapi = "https://api.dictionaryapi.dev/api/v2/entries/en/"+getsearchword;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, dictionaryapi, new Response.Listener<String>() {
@@ -115,31 +116,31 @@ String examples,meanings,partofspeech;
                         word.setText(wording);
                         phonectics.setText(phoneticss);
                         for (int j = 0; j < jsonArray1.length(); j++){
-                            JSONObject jsonObject1 = jsonArray1.getJSONObject(j);
+                            JSONObject jsonObject1 = jsonArray1.getJSONObject(0);
                             JSONArray jsonArray2 = jsonObject1.getJSONArray("definitions");
                              partofspeech = jsonObject1.getString("partOfSpeech");
+                             speech.setText(partofspeech);
 
                             for (int jj = 0; jj < jsonArray2.length(); jj++){
-                                JSONObject jsonObject2 = jsonArray2.getJSONObject(jj);
+                                JSONObject jsonObject2 = jsonArray2.getJSONObject(0);
                                  meanings = jsonObject2.getString("definition");
-                                //examples = jsonObject2.getString("example");
+                               meaning.setText(meanings);
 
-                                Words word = new Words(meanings,"",partofspeech,"hi");
-                                userList.add(word);
+//                                Words word = new Words(meanings,"",partofspeech,"hi");
+//                                userList.add(word);
                                 loading.dismissDialog();
-                               // meaning.setText(meanings);
                             }
 
-//                            for (int a =0; a < jsonArray2.length(); a++){
-//                                JSONObject jsonObject2 = jsonArray2.getJSONObject(0);
-//                                 examples = jsonObject2.getString("example");
-////                                example.setText(examples);
-//                            }
+                            for (int a =0; a < jsonArray2.length(); a++){
+                                JSONObject jsonObject2 = jsonArray2.getJSONObject(0);
+                                 examples = jsonObject2.getString("example");
+                                example.setText(examples);
+                            }
                         }
                     }
-                    adapter = new RecyclerAdapter(userList);
-                    recyclerView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
+//                    adapter = new RecyclerAdapter(userList);
+//                    recyclerView.setAdapter(adapter);
+//                    adapter.notifyDataSetChanged();
 
 
                 } catch (Exception e) {
@@ -152,7 +153,7 @@ String examples,meanings,partofspeech;
             @Override
             public void onErrorResponse(VolleyError error) {
                 loading.dismissDialog();
-                Toast.makeText(Dictionary.this, "error"+error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Dictionary.this, "An error occurred", Toast.LENGTH_SHORT).show();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());

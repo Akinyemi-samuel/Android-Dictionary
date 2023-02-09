@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#34F0EAD6"
+    android:orientation="vertical"
+    tools:context=".About">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#34F0EAD6">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="40dp">
+
+                <TextView
+                    android:id="@+id/welcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="-5dp"
+                    android:fontFamily="@font/roboto_condensed_regular"
+                    android:text="About"
+                    android:textColor="@color/main"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/notification"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/baseline_arrow_back_24"
+                android:backgroundTint="@color/black"
+                android:onClick="backbtn" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    -
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/buildversiontxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:fontFamily="@font/roboto_condensed_light"
+            android:text="Build version"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/version_numb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buildversiontxt"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="1.0.0.0" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/version_numb"
+            android:layout_marginTop="10dp"
+            android:background="#80000000" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/samuellink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_condensed_light"
+        android:gravity="center"
+        android:text="@string/app_name_link"
+        android:textColor="@color/black"
+        android:textColorLink="@color/main"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

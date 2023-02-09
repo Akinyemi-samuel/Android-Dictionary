@@ -19,6 +19,7 @@
             android:src="@drawable/notifyicon"
             android:layout_alignParentEnd="true"
             android:elevation="20dp"
+            android:onClick="gotoabout"
             android:outlineAmbientShadowColor="@color/main"/>
 
     </RelativeLayout>

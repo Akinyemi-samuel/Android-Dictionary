@@ -97,9 +97,83 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerview"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Partofspeech"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textColor="@color/main"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/partofspeechdistionary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text=""
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Definition"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textColor="@color/main"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/Definitiondistionary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text=""
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Example"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textColor="@color/main"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/exampledistionary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text=""
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
 
 
 

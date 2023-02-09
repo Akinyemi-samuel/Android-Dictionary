@@ -16,5 +16,6 @@ public class SplashScreen extends AppCompatActivity {
 
     public void gotomainpage(View view) {
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        finish();
     }
 }

@@ -43,7 +43,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/roboto_condensed_regular"
             android:gravity="center"
-            android:text="Let Scribe help you learn, explore and understand hundreds of idioms and phrases"
+            android:text="Let Dictionary help you learn, explore and understand hundreds of idioms and phrases"
             android:textColor="@color/gray"
             android:textSize="18sp" />
 
