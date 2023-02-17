@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,13 +27,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Dictionary extends AppCompatActivity {
 String examples,meanings,partofspeech;
     RecyclerView recyclerView;
     RecyclerAdapter adapter;
+    TextToSpeech textToSpeech;
     Loading loading = new Loading(this);
-    ImageView searchicon;
+    ImageView searchicon,speaker;
     private int shortAnimationDuration;
     private ArrayList<Words> userList = new ArrayList<>();
     SearchView searchingview;
@@ -50,6 +54,7 @@ String examples,meanings,partofspeech;
         example = findViewById(R.id.exampledistionary);
         searchingview = findViewById(R.id.searchingview);
         searchicon = findViewById(R.id.searchicon);
+        speaker = findViewById(R.id.speaker);
 
 
         searchicon.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +77,18 @@ String examples,meanings,partofspeech;
         recyclerView.setLayoutManager(layoutManager);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setHasFixedSize(false);
+
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+
+                // if No error is found then only it will run
+                if(i!=TextToSpeech.ERROR){
+                    // To Choose language of speech
+                    textToSpeech.setLanguage(Locale.UK);
+                }
+            }
+        });
 
 //THIS IS THE SEARCHPLACEHOLDER THAT COLLECTS EVERY TEXT
         searchingview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -111,10 +128,31 @@ String examples,meanings,partofspeech;
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(0);
                         JSONArray jsonArray1 = jsonObject.getJSONArray("meanings");
+                        JSONArray jsonArray5 = jsonObject.getJSONArray("phonetics");
                         String wording = jsonObject.getString("word");
                         String phoneticss = jsonObject.getString("phonetic");
                         word.setText(wording);
                         phonectics.setText(phoneticss);
+
+                        for (int t = 0; t < jsonArray5.length(); t++) {
+                            JSONObject jsonObject1 = jsonArray5.getJSONObject(0);
+                            String audiourl = jsonObject1.getString("audio");
+                            speaker.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    if (audiourl != null){
+                                        MediaPlayer mediaPlayer = new MediaPlayer();
+                                        try {
+//                                            mediaPlayer.setDataSource("https:"+audiourl);
+//                                            mediaPlayer.start();
+                                            textToSpeech.speak(wording,TextToSpeech.QUEUE_FLUSH,null);
+                                        }catch (Exception e){
+                                            Toast.makeText(Dictionary.this, e+toString(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            });
+                        }
                         for (int j = 0; j < jsonArray1.length(); j++){
                             JSONObject jsonObject1 = jsonArray1.getJSONObject(0);
                             JSONArray jsonArray2 = jsonObject1.getJSONArray("definitions");
